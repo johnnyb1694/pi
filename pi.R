@@ -9,7 +9,7 @@
 # 3. Using loops in a naive way (x)
 # 4. Growing objects in a loop in a naive way (x)
 # 5. Failing to utilise inbuilt functionality (e.g. cumsum) (x)
-# 6. Unnecessary repetition: mainly the `ifelse()` calls
+# 6. Unnecessary repetition: mainly the `ifelse()` calls (x)
 # 7. Lack of abstraction (e.g. functions); it is monolithic
 # 8. Naive use of `:` sequence operator; better practice to use `seq_len()` or the like
 # 9. No seed present: this is a simulation model after all!
@@ -30,9 +30,7 @@ y <- runif(n = n_trials, min = min, max = max)
 
 distance_to_origin <- sqrt(x^2 + y^2)
 
-flag_inside_or_outside <- ifelse(distance_to_origin <= 1, 'Inside', 'Outside')
-
-inside <- ifelse(flag_inside_or_outside == 'Inside', 1, 0)
+inside <- (distance_to_origin <= 1)
 
 cumulative_inside <- cumsum(inside)
 
