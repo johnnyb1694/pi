@@ -10,8 +10,8 @@
 # 4. Growing objects in a loop in a naive way (x)
 # 5. Failing to utilise inbuilt functionality (e.g. cumsum) (x)
 # 6. Unnecessary repetition: mainly the `ifelse()` calls (x)
-# 7. Lack of abstraction (e.g. functions); it is monolithic
-# 8. Naive use of `:` sequence operator; better practice to use `seq_len()` or the like
+# 7. Lack of abstraction (e.g. functions); it is monolithic (x)
+# 8. Naive use of `:` sequence operator; better practice to use `seq_len()` or the like (x)
 # 9. No seed present: this is a simulation model after all!
 
 # Other practices which could help but deserve broader treatment:
@@ -21,19 +21,24 @@
 # 3. Modularisation
 # 4. Testing
 
+# Setup
 n_trials <- 1000L
 min <- 0
 max <- 1
+set.seed(123)
 
+# Simulate points
 x <- runif(n = n_trials, min = min, max = max)
 y <- runif(n = n_trials, min = min, max = max)
 
+# Calculate distance to origin
 distance_to_origin <- sqrt(x^2 + y^2)
 
+# Determine which points lie inside the circle
 inside <- (distance_to_origin <= 1)
 
+# Calculate estimates of pi over time
 cumulative_inside <- cumsum(inside)
-
 pi_results <- (4 * cumulative_inside) / seq_len(n_trials)
 
 
