@@ -4,7 +4,7 @@
 
 # The key problems with this script are as follows:
 
-# 1. The number of trials (or anything else) is not parametrised as an integer 
+# 1. The number of trials (or anything else) is not parametrised as an integer (x)
 # 2. Inconsistent naming conventions
 # 3. Using loops in a naive way
 # 4. Growing objects in a loop in a naive way
@@ -33,7 +33,7 @@ for (i in 1:n_trials) {
   distances <- c(distances, sqrt(x[i] ^ 2 + y[i] ^ 2))
 }
 
-flagInsideOrOutside <- ifelse(distances <= 1, 'Inside', 'Outside')
+flag_inside_or_outside <- ifelse(distances <= 1, 'Inside', 'Outside')
 
 inside <- ifelse(flag == 'Inside', 1, 0)
 
@@ -46,10 +46,10 @@ for (i in 1:n_trials) {
   }
 }
 
-piResults <- c()
+pi_results <- c()
 for (i in 1:n_trials) {
-  numberOfPointsInsideTheSquare <- i
-  piResults <- c(piResults, 4 * cumulative_inside[i] / numberOfPointsInsideTheSquare)
+  number_of_points_inside_the_square <- i
+  piResults <- c(piResults, 4 * cumulative_inside[i] / number_of_points_inside_the_square)
 }
 
 
