@@ -19,7 +19,9 @@
 # 1. Virtual environments
 # 2. Configuration file
 # 3. Modularisation
-# 4. Testing
+# 4. Unit tests
+
+library(ggplot2)
 
 # Setup
 setup_parameters <- function(n_trials, min = 0, max = 1, seed = 123) {
@@ -69,13 +71,33 @@ generate_pi_estimates <- function(inside) {
   return(pi_results)
 }
 
+plot_pi_estimates <- function(pi_results) {
+  
+  n_trials <- length(pi_results)
+  
+  to_plot <- data.frame(trial_number = seq_len(n_trials), pi_results)
+  
+  pi_plot <- ggplot(data = to_plot, mapping = aes(x = trial_number, y = pi_results)) +
+    geom_line() +
+    geom_hline(yintercept = pi, lty = 'dashed') +
+    theme_light() +
+    scale_x_continuous(labels = scales::comma_format()) +
+    labs(x = 'Trial',
+         y = 'Estimate',
+         title = 'Time series of estimates for pi',
+         subtitle = 'Dotted line shows the value we are aiming for (to a degree)')
+  
+  return(pi_plot)
+}
+
 # Pipeline-style execution
-estimates <- setup_parameters(n_trials = 100000L) |>
+pi_results <- setup_parameters(n_trials = 100000L) |>
   simulate_points() |>
   compute_dist_to_origin() |>
   determine_classification() |>
   generate_pi_estimates()
 
+plot_pi_estimates(pi_results)
 
 
 
