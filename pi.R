@@ -48,7 +48,7 @@ for (i in 1:n_trials) {
 
 pi_results <- c()
 for (i in 1:n_trials) {
-  piResults <- c(piResults, 4 * cumulative_inside[i] / i)
+  pi_results <- c(pi_results, 4 * cumulative_inside[i] / i)
 }
 
 
