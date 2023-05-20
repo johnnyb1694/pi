@@ -1,0 +1,6 @@
+default:
+  metadata:
+    author: !expr Sys.info()[['user']]
+    date: !expr Sys.time()
+  default_simulation_params:
+    n_trials: 100000

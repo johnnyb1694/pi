@@ -1,8 +1,8 @@
-box::use(./R/simulation)
-box::use(./R/visualisation)
+box::use(./R/simulation[simulate_pi])
+box::use(./R/visualisation[plot_pi])
 
-simulate <- simulation$simulate_pi
-viz <- visualisation$plot_pi_estimates
+simulation_params <- config::get('default_simulation_params')
 
-res <- simulate(n_trials = 10000L)
-plot <- viz(res)
+estimates <- simulate_pi(n_trials = simulation_params[['n_trials']])
+
+plot <- plot_pi(estimates)

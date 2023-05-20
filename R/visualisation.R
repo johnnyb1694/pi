@@ -1,6 +1,6 @@
 box::use(ggplot2[...])
 
-plot_pi_estimates <- function(pi_results) {
+plot_pi <- function(pi_results) {
   
   n_trials <- length(pi_results)
   
@@ -28,4 +28,4 @@ plot_pi_estimates <- function(pi_results) {
   
 }
 
-box::export(plot_pi_estimates)
+box::export(plot_pi)
