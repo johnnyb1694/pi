@@ -1,8 +1,8 @@
-pi_results <- setup_parameters(n_trials = 100000L) |>
-  simulate_points() |>
-  compute_dist_to_origin() |>
-  determine_classification() |>
-  generate_pi_estimates()
+box::use(./R/simulation)
+box::use(./R/visualisation)
 
-plot_pi_estimates(pi_results)
- 
+simulate <- simulation$simulate_pi
+viz <- visualisation$plot_pi_estimates
+
+res <- simulate(n_trials = 10000L)
+plot <- viz(res)

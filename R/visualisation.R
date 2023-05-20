@@ -1,4 +1,4 @@
-library(ggplot2)
+box::use(ggplot2[...])
 
 plot_pi_estimates <- function(pi_results) {
   
@@ -18,3 +18,14 @@ plot_pi_estimates <- function(pi_results) {
   
   return(pi_plot)
 }
+
+.on_load = function(ns) {
+  
+  message(
+    'Loading module "', box::name(), '"\n',
+    'Module path: "', basename(box::file()), '"'
+  )
+  
+}
+
+box::export(plot_pi_estimates)
